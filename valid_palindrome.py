@@ -21,13 +21,12 @@ Given a string s, return true if it is a palindrome, or false otherwise.
 def isPalindrome(str):
     start = 0 
     end = len(str) - 1
-    whileCondition = start < end
 
-    while whileCondition:
+    while start < end:
        
-        while whileCondition and not str[start].isalnum():
+        while start < end and not str[start].isalnum():
             start += 1
-        while whileCondition and not str[end].isalnum():
+        while start < end and not str[end].isalnum():
             end -= 1
             
         firstChar = str[start]
