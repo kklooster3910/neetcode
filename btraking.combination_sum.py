@@ -39,7 +39,7 @@ def combinationSums(arr, target):
         if target < currentSum:
             return
         if target == currentSum:
-            returnArr.append([currentComb])
+            returnArr.append(currentComb)
             return
         # target - 8 
         # 2, 5, [5]
