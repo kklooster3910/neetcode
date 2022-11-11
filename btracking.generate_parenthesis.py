@@ -12,24 +12,24 @@ def generateParens(pairs): #3
 
         print(left, right, combo)
         if len(combo) == pairs * 2:
-            print('app')
+            print('appending and returning')
             combos.append("".join(combo))
         #   return
         if left < pairs:
-            # print('inside Left < pairs')
+            print('inside Left < pairs, going down left')
             combo.append('(')
             backtrackParens(combo, left+1 , right, nextLevel)
             combo.pop()
-            # print('backout of left, level=',nextLevel)
-            # print(left, right, combo)
+            print('backout of left, level=',nextLevel)
+            print(left, right, combo)
 
         if right < left:
-            # print('inside right < pairs')
+            print('inside right < pairs, going down right')
             combo.append(')')
             backtrackParens(combo, left , right+1, nextLevel)
             combo.pop()
-            # print('backout of right, level=',nextLevel)
-            # print(left, right, combo)
+            print('backout of right, level=',nextLevel)
+            print(left, right, combo)
 
     backtrackParens()
     return combos
@@ -37,7 +37,7 @@ def generateParens(pairs): #3
 
 
 
-print(generateParens(15))
+print(generateParens(3))
 # n = 2
 # generateParens
 # step 1 level 1
