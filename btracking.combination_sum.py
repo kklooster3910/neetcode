@@ -53,7 +53,6 @@ def combinationSums(arr, target):
                 continue
             backtrack(i, nextSum, currentComb + [arr[i]])
 
-
     for i in range(len(arr)):
         # [3, 4, 5]
         backtrack(i, arr[i], [arr[i]])
