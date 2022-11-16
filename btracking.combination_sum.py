@@ -68,25 +68,27 @@ def combinationSums(arr, target):
     allCombos = []
 
     def backtracking(idx, currentSum, currentCombo, lvl = 0):
-        print('top of recursive fn', idx, currentSum, currentCombo, lvl)
+        # print('top of recursive fn', idx, currentSum, currentCombo, lvl)
         if target == currentSum:
             # make a deep dupe of combo to append to all combos or else currentCombo will be constantly mutated
-            print('target = currentSum condition')
-            print(idx, currentSum, currentCombo, lvl)
+            # print('target = currentSum condition')
+            # print(idx, currentSum, currentCombo, lvl)
             allCombos.append(list(currentCombo))
+            # allCombos.append(currentCombo)
             return
         if currentSum > target:
             return
         for i in range(idx, len(arr)):
             currentCombo.append(arr[i])
+            # currentComobo + [arr[i]]
             # give the current num as many chances as it needs to sum to target before moving on
-            print(' in loop before recursive call')
-            print(idx, currentSum, currentCombo, lvl)
+            # print(' in loop before recursive call')
+            # print(idx, currentSum, currentCombo, lvl)
             backtracking(i, currentSum + arr[i], currentCombo, lvl+1)
             # backtrack and pop off last number from currentCombo
-            print('before pop', currentCombo)
+            # print('before pop', currentCombo)
             currentCombo.pop()
-            print('after pop', currentCombo)
+            # print('after pop', currentCombo)
 
     for i in range(0, len(arr)):
         backtracking(i, arr[i], [arr[i]])

@@ -4,35 +4,47 @@ Given n pairs of parentheses, write a function to generate all combinations of w
 
 """
 
+# def generateParens(pairs): #3
+#     combos = []
+
+#     def backtrackParens(combo=[], left=0, right=0, level=0):
+#         nextLevel = level + 1
+#         print('level=',nextLevel)
+
+#         print(left, right, combo)
+#         if len(combo) == pairs * 2:
+#             print('appending and returning')
+#             combos.append("".join(combo))
+#         #   return
+#         if left < pairs:
+#             print('inside Left < pairs, going down left')
+#             combo.append('(')
+#             backtrackParens(combo, left+1 , right, nextLevel)
+#             combo.pop()
+#             print('backout of left, level=',nextLevel)
+#             print(left, right, combo)
+
+#         if right < left:
+#             print('inside right < pairs, going down right')
+#             combo.append(')')
+#             backtrackParens(combo, left , right+1, nextLevel)
+#             combo.pop()
+#             print('backout of right, level=',nextLevel)
+#             print(left, right, combo)
+
+#     backtrackParens()
+#     return combos
+
+"""
+
+Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+
+"""
+
 def generateParens(pairs): #3
     combos = []
 
-    def backtrackParens(combo=[], left=0, right=0, level=0):
-        nextLevel = level + 1
-        print('level=',nextLevel)
 
-        print(left, right, combo)
-        if len(combo) == pairs * 2:
-            print('appending and returning')
-            combos.append("".join(combo))
-        #   return
-        if left < pairs:
-            print('inside Left < pairs, going down left')
-            combo.append('(')
-            backtrackParens(combo, left+1 , right, nextLevel)
-            combo.pop()
-            print('backout of left, level=',nextLevel)
-            print(left, right, combo)
-
-        if right < left:
-            print('inside right < pairs, going down right')
-            combo.append(')')
-            backtrackParens(combo, left , right+1, nextLevel)
-            combo.pop()
-            print('backout of right, level=',nextLevel)
-            print(left, right, combo)
-
-    backtrackParens()
     return combos
   
 
