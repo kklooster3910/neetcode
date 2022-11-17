@@ -30,7 +30,25 @@ A subtree of a binary tree tree is a tree that consists of a node in tree and al
 
 from collections import deque
 
+def compareTrees(node, subNode): #null, null
+    if node is None or subNode is None: return node == subNode
+    
+    leftMatch = compareTrees(node.left, subNode.left)
+    rightMatch = compareTrees(node.right, subNode.right)
+    if leftMatch  and  rightMatch : 
+        return True
+    else: 
+        return False
 def subsetOfAnotherTree(node, subrootNode):
-  queue = deque([])
-
-  while (len)
+    # functionality = iterates over the nodes until we find a node value that equals to root node of the subrootNode
+    # constraint  - once we find equal values, we gotta be able to validate all of it's children are the same
+  
+  queue = deque([node])
+  while (len(queue)):
+    current = queue.leftPop()
+    if (node.val == subrootNode.val):
+        sameTree = compareTrees(node, subrootNode)
+        return sameTree
+    if (current.left): queue.append(current.left)
+    if (current.right): queue.append(current.right)
+  return False
