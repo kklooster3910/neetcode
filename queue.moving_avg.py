@@ -16,11 +16,11 @@ queue.pop()
 queue.appendleft()
 queue.append()
 """
-movingAverage = new MovingAverage(3) # -> []
-movingAverage.next(1); # return 1.0 = 1 / 1
-movingAverage.next(10); # return 5.5 = (1 + 10) / 2
-movingAverage.next(3); # return 4.66667 = (1 + 10 + 3) / 3
-movingAverage.next(5); # return 6.0 = (10 + 3 + 5) / 3
+# movingAverage = new MovingAverage(3) # -> []
+# movingAverage.next(1); # return 1.0 = 1 / 1
+# movingAverage.next(10); # return 5.5 = (1 + 10) / 2
+# movingAverage.next(3); # return 4.66667 = (1 + 10 + 3) / 3
+# movingAverage.next(5); # return 6.0 = (10 + 3 + 5) / 3
 
 # Initializing class, we want a create of a deque of given size
 #   Next method each time its run
@@ -44,3 +44,6 @@ class MovingAverage:
         self.currSize += 1 
       self.queue.append(val)
       return sum(self.queue) / self.currSize
+
+lolQueu = deque()
+print(lolQueu)
