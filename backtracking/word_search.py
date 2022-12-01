@@ -15,30 +15,30 @@ constraitns:
 
 """
 
-def wordSearch(grid, target):
-    if len(target) == 0: return True
-    if len(target) > len(grid) * len(grid[0]): return False
+# def wordSearch(grid, target):
+#     if len(target) == 0: return True
+#     if len(target) > len(grid) * len(grid[0]): return False
 
-    def backtrack(indexStr, x, y):
+#     def backtrack(indexStr, x, y):
         
-        if indexStr == len(target) - 1: return True
-        directions = [[0, -1],[-1, 0],[0, 1], [1, 0]]
-        holder = grid[x][y]
-        grid[x][y] = "@"
-        for direction in directions:
-            nextX, nextY = x + direction[0],y + direction[1]
-            if nextX >= 0 and nextX <= len(grid) - 1 and nextY >= 0 and nextY <= len(grid[0]) - 1:
-                nextChar = grid[nextX][nextY]
-                if nextChar == target[indexStr + 1]:
-                    if backtrack(indexStr + 1, nextX, nextY): return True
-        grid[x][y] = holder
+#         if indexStr == len(target) - 1: return True
+#         directions = [[0, -1],[-1, 0],[0, 1], [1, 0]]
+#         holder = grid[x][y]
+#         grid[x][y] = "@"
+#         for direction in directions:
+#             nextX, nextY = x + direction[0],y + direction[1]
+#             if nextX >= 0 and nextX <= len(grid) - 1 and nextY >= 0 and nextY <= len(grid[0]) - 1:
+#                 nextChar = grid[nextX][nextY]
+#                 if nextChar == target[indexStr + 1]:
+#                     if backtrack(indexStr + 1, nextX, nextY): return True
+#         grid[x][y] = holder
     
-    for i,row in enumerate(grid):
-        for i2 in range(len(row)):
-            char = grid[i][i2]
-            if char == target[0]:
-                if backtrack(0,i, i2): return True
-    return False
+#     for i,row in enumerate(grid):
+#         for i2 in range(len(row)):
+#             char = grid[i][i2]
+#             if char == target[0]:
+#                 if backtrack(0,i, i2): return True
+#     return False
 
 """
  target = "abc"

@@ -25,15 +25,15 @@ A binary tree's maximum depth is the number of nodes along the longest path from
         
 """
 
-def maximumDepth(root, depth = 0):
-    if root.value == None:
-        return depth
-    leftDepth = maximumDepth(root.left, depth + 1)
-    rightDepth = maximumDepth(root.right, depth + 1)
-    if leftDepth > rightDepth:
-        return leftDepth
-    else:
-        return rightDepth
+# def maximumDepth(root, depth = 0):
+    # if root.value == None:
+    #     return depth
+    # leftDepth = maximumDepth(root.left, depth + 1)
+    # rightDepth = maximumDepth(root.right, depth + 1)
+    # if leftDepth > rightDepth:
+    #     return leftDepth
+    # else:
+    #     return rightDepth
 
 """"
 1st lvl: root: 3, depth: 0 => Go Left
@@ -54,4 +54,5 @@ def maximumDepth(root, depth = 0):
 
 1st lvl: root: 3, depth: 0 => Go Right
 ...
-""""
+"""
+def maximumDepth(root, depth = 0):

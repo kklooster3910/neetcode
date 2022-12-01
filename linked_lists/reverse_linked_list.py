@@ -133,22 +133,80 @@ Given the head of a singly linked list, reverse the list, and return the reverse
 #         currentNode.next = prevNode # 
 #         prevNode = currentNode #
 #         currentNode = nextNode #
-    """
-    i1 prevNode: None ,currentNode :1, => currentNode.next : None  , links: 1 > None
-    i2 prevNode: 1 ,currentNode 2:, => currentNode.next 1:  , links: 2 > 1 > None
-    i3 prevNode:2 ,currentNode :3, => currentNode.next :2 , links: 3 > 2 > 1 > None
-    finalval: 
-    """
+"""
+i1 prevNode: None ,currentNode :1, => currentNode.next : None  , links: 1 > None
+i2 prevNode: 1 ,currentNode 2:, => currentNode.next 1:  , links: 2 > 1 > None
+i3 prevNode:2 ,currentNode :3, => currentNode.next :2 , links: 3 > 2 > 1 > None
+finalval: 
+"""
     
     # return prevNode
 
 # head1 = ListNode(1)
 # head1.next = ListNode(5)
 
-# THIS NEEDS TO BE REVIEWED AND DONE NEXT
+# 1 -> 2 -> 3
 
-a = [1,5,7]
-b = [2,6,8]
+# def reverseLinkedListR(head):
+#     if head is None:
+#         return None
+#     if head.next is None:
+#         return head
+#     newHead = None
+
+#     def reverseList(node):
+#         #why do I need this?
+#         nonlocal newHead
+#         if node.next is None:
+#             newHead = node
+#             return node
+#         nextNode = reverseList(node.next)
+#         nextNode.next = node
+#         return node
+
+#     newTail = reverseList(head)
+#     newTail.next = None
+#     return newHead
+
+
+
+def reverseLinkedListI(head):
+    if head is None: return None
+    if head.next is None: return head
+
+    prevNode = None
+    currentNode = head
+
+    while currentNode:
+        nextNode = currentNode.next
+        currentNode.next = prevNode
+        prevNode = currentNode
+        currentNode = nextNode
+
+    return prevNode
+
+def reverseLinkedListR(head):
+    if head is None: return None
+    if head.next is None: return head
+
+    newHead = None
+    def reverse(node):
+        nonlocal newHead
+        if node.next is None:
+            newHead = node
+            return node
+        nextNode = reverse(node.next)
+        nextNode.next = node
+        return node
+    newTail = reverse(head)
+    newTail.next = None
+
+    return newHead
+
+
+
+a = [1,5,7,10,1,12]
+b = [2,6,8,7,3,2,1]
 node = ListNode(a[0])
 node2 = ListNode(b[0])
 list1 = node 
@@ -168,8 +226,8 @@ def printAllNodes(node):
     while node:
         print(node.val)
         node = node.next
-reversed1 = revereseLLIterative(list1)
-reversed2 = revereseLLIterative(list2)
+reversed1 = reverseLinkedListR(list1)
+reversed2 = reverseLinkedListR(list2)
 
 printAllNodes(reversed1)
 printAllNodes(reversed2)

@@ -108,34 +108,34 @@ class ListNode:
 # a = [1,5,7,7,10,11]
 # b = [2,6,7, 8, 9]
 # head -> 1 - 2 - 5 -6 - 7 - 7 - 8 - 9 - 10
-def mergeTwoLinkedListsI(head1, head2):
-    if head1 is None and head2 is None:
-        return None
-    if head1 is None:
-        return head2
-    if head2 is None:
-        return head1
+# def mergeTwoLinkedListsI(head1, head2):
+#     if head1 is None and head2 is None:
+#         return None
+#     if head1 is None:
+#         return head2
+#     if head2 is None:
+#         return head1
     
-    dummy = ListNode()
-    head = dummy
-    while head1 and head2:
-        if head1.val <= head2.val:
-            head.next = head1
-            head1 = head1.next
-        else:
-            head.next = head2
-            head2 = head2.next
-        head = head.next
+#     dummy = ListNode()
+#     head = dummy
+#     while head1 and head2:
+#         if head1.val <= head2.val:
+#             head.next = head1
+#             head1 = head1.next
+#         else:
+#             head.next = head2
+#             head2 = head2.next
+#         head = head.next
     
-    if head1:
-        head.next = head1
-    if head2:
-        head.next = head2
-    return dummy.next
+#     if head1:
+#         head.next = head1
+#     if head2:
+#         head.next = head2
+#     return dummy.next
 
 
-# list one -> 1 - 2
-# list two -> 3 - 4
+# list one -> 1 - 3 
+# list two -> 2 - 4
 def mergeTwoLinkedListsR(head1, head2, lvl = 0):
     if head1 is None and head2 is None:
         return None
@@ -150,8 +150,6 @@ def mergeTwoLinkedListsR(head1, head2, lvl = 0):
         return head1
     else:
         node = mergeTwoLinkedListsR(head1, head2.next, lvl + 1)
-        # 2
-        # 2 - 2
         head2.next = node
         return head2
 
@@ -165,8 +163,44 @@ def mergeTwoLinkedListsR(head1, head2, lvl = 0):
 
 # a = [1,5, 10, 11]
 # b = [2,6,7, 7, 8, 9]
-a = [1, 2]
-b = [2, 3]
+
+# list one -> 1 - 5 - 7
+# list two -> 2 - 6 - 8
+def mergeTwoLinkedListsI(head1, head2):
+    if head1 is None and head2 is None: return None
+    if head1 is None: return head2
+    if head2 is None: return head1
+    dummy = ListNode()
+    head = dummy
+    while head1 and head2:
+        if head1.val < head2.val:
+            head.next = head1
+            head1 = head1.next
+        else:
+            head.next = head2
+            head2 = head2.next
+        head = head.next
+    if head1: head.next = head1
+    if head2: head.next = head2
+    return dummy.next
+
+def mergeTwoLinkedListsR(head1, head2):
+    if head1 is None and head2 is None: return None
+    if head1 is None: return head2
+    if head2 is None: return head1
+
+    if head1.val < head2.val:
+        node = mergeTwoLinkedListsR(head1.next, head2)
+        head1.next = node
+        return node
+    else:
+        node = mergeTwoLinkedListsR(head1, head2.next)
+        head2.next = node
+        return node
+
+
+a = [1, 2, 3]
+b = [1, 3, 4, 7, 8, 9]
 node = ListNode(a[0])
 node2 = ListNode(b[0])
 list1 = node 
@@ -223,5 +257,5 @@ go over solutions -> explain logic of solution
 
 
     
-mergedList = mergeTwoLinkedListsR(list1, list2)
+mergedList = mergeTwoLinkedListsI(list1, list2)
 printAllNodes(mergedList)

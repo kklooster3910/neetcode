@@ -26,50 +26,50 @@ is given below. Note that 1 does not map to any letters.
 
 
 
-def phoneNums(str): # input is "23"
-    combos = []
+# def phoneNums(str): # input is "23"
+#     combos = []
 
-    possibleChars = { 
-        '2': 'abc',
-        '3': 'def',
-        '4': 'ghi',
-        '5': 'jkl',
-        '6': 'mno',
-        '7': 'pqrs',
-        '8': 'tuv',
-        '9': 'wxyz'
-    }
+#     possibleChars = { 
+#         '2': 'abc',
+#         '3': 'def',
+#         '4': 'ghi',
+#         '5': 'jkl',
+#         '6': 'mno',
+#         '7': 'pqrs',
+#         '8': 'tuv',
+#         '9': 'wxyz'
+#     }
     
-    def backtracking(combo=[], idx=0, lvl=0):
-        print('top of fn', combos)
-        if len(combo) == len(str):
-            combos.append(''.join(combo))
-        else:
-            # nextChars = possibleChars[str[idx]].split('') # [a,b,c]
-            # nextChars = list(possibleChars[str[idx]]) # [a,b,c]
-            nextChars = possibleChars[str[idx]] # [a,b,c]
+#     def backtracking(combo=[], idx=0, lvl=0):
+#         print('top of fn', combos)
+#         if len(combo) == len(str):
+#             combos.append(''.join(combo))
+#         else:
+#             # nextChars = possibleChars[str[idx]].split('') # [a,b,c]
+#             # nextChars = list(possibleChars[str[idx]]) # [a,b,c]
+#             nextChars = possibleChars[str[idx]] # [a,b,c]
             
-            print('before for loop')
-            print(nextChars)
+#             print('before for loop')
+#             print(nextChars)
 
-            for char in nextChars:  # [a,b,c]
-                print('inside for loop')
-                print(char, lvl, idx)
-                combo.append(char) 
-                print('after combo append')
-                print(combo, lvl, idx)
-                backtracking(combo, idx+1, lvl+1) # ['a'], 1
-                combo.pop()
-                print('after pop')
-                print(combo, lvl, idx)
-            # for i in range(len(nextChars)):
-            #     combo.append(nextChars[i])
-            #     backtracking(combo, idx+1)
-            #     combo.pop()
-    backtracking()
-    return combos
+#             for char in nextChars:  # [a,b,c]
+#                 print('inside for loop')
+#                 print(char, lvl, idx)
+#                 combo.append(char) 
+#                 print('after combo append')
+#                 print(combo, lvl, idx)
+#                 backtracking(combo, idx+1, lvl+1) # ['a'], 1
+#                 combo.pop()
+#                 print('after pop')
+#                 print(combo, lvl, idx)
+#             # for i in range(len(nextChars)):
+#             #     combo.append(nextChars[i])
+#             #     backtracking(combo, idx+1)
+#             #     combo.pop()
+#     backtracking()
+#     return combos
 
-print(phoneNums('23'))
+# print(phoneNums('23'))
 # print(phoneNums('234'))
 
 #S1 L1: idx 0, combo = "" => creates frame for 'a'  *eventually 'b' & 'c'

@@ -5,26 +5,31 @@ Given n pairs of parentheses, write a function to generate all combinations of w
 """
 
 def generateParens(pairs): #3
-    combo = []
-    combinations = []
+    # combo = []
+    # combinations = []
 
-    def backtracking(left, right):
-        if left == right == pairs:
-            combinations.append("".join(combo))
-            # don't need a return here since other two conditionas won't hit
-            return
-        if left < pairs:
-            combo.append('(')
-            backtracking(left + 1, right)
-            combo.pop()
-        if left > right:
-            combo.append(')')
-            backtracking(left, right + 1)
-            combo.pop()
+    # def backtracking(left, right):
+    #     if left == right == pairs:
+    #         combinations.append("".join(combo))
+    #         # don't need a return here since other two conditionas won't hit
+    #         return
+    #     if left < pairs:
+    #         combo.append('(')
+    #         backtracking(left + 1, right)
+    #         combo.pop()
+    #     if left > right:
+    #         combo.append(')')
+    #         backtracking(left, right + 1)
+    #         combo.pop()
     
-    backtracking(0, 0)
-    return combinations
+    # backtracking(0, 0)
+    # return combinations
+
+
+
+
         
+def generateParens(pairs):
 
 
 print(generateParens(2))
