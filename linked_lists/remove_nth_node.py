@@ -58,41 +58,56 @@ def removeNthNode(head, n):
         head = head.next
     return head
 
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+# input is going to be head: ll node, n -> which is the number from the last node indicating which node we want to remove
+# return head 
+# head can be none
+# can only get one node passed in
+# 1 <= n <= linklist.size() if linklist is not None
+# node to remove = ll.size() - n + 1
+# use two counter
+# first: 1 second: 1
+# nodeToRemove = 0 
+# currentNode = head
+# while cN:
+#   iterate to end of ll, incremenet first counter on each node
+#   nodeTOremove = first - n + 1
+#   if second == 1:
+#       currentNode = head
+#   loop through again incrementing second and when second == nodeToRemove:
+# when looping through second time, need previous node to set prevNode.next = currentNode.next
 
-a = [1, 2, 3, 4]
-# b = [1, 3, 4, 7, 8, 9]
-node = ListNode(a[0])
-# node2 = ListNode(b[0])
-list1 = node 
-# list2 = node2
-for i in range(1,len(a)):
-    val = a[i]
-    # val2 = b[i]
-    newNode = ListNode(val)
-    # newNode2 = ListNode(val2)
-    node.next = newNode
-    node = newNode
-    # node2.next = newNode2
-    # node2 = newNode2
- 
-# for i in range(1,len(b)):
-#     # val = a[i]
-#     val2 = b[i]
-#     # newNode = ListNode(val)
-#     newNode2 = ListNode(val2)
-#     # node.next = newNode
-#     # node = newNode
-#     node2.next = newNode2
-#     node2 = newNode2
-removed1 = removeNth
+# 1 -> 2 -> 3 -> 4 -> 5
+# 1 -> 2 -> 3 -> 5
+from utils import LinkedList
 
-def printAllNodes(node):
-    while node :
-        print(node.val)
-        node = node.next
+def removeNthTwoPass(head, n):
+    nodeToRemove = 0
+    firstCount = 0
+    secondCount = 0
+    currentNode = head
 
-printAllNodes(removeNthNode(list1, 4))
+    while currentNode:
+        firstCount += 1
+        if currentNode.next is None:
+            nodeToRemove = firstCount - n + 1
+            break
+        currentNode = currentNode.next
+
+    currentNode = head
+    prevNode = None
+    while currentNode:
+        secondCount += 1
+        if secondCount == nodeToRemove:
+            if nodeToRemove == 1:
+                head = currentNode.next
+            else:
+                prevNode.next = currentNode.next
+        prevNode = currentNode
+        currentNode = currentNode.next
+
+    return head 
+
+list1 = LinkedList(4, True)
+LinkedList.printList(list1)
+removed1 = removeNthTwoPass(list1.head, 3)
+LinkedList.printNodes(removed1)
