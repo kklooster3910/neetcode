@@ -47,10 +47,29 @@ contraints:
 
 # Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 input1 = '({[]})'
-input2 = '({[]})}'
+input2 = '{({[]})}'
 input3 = '(('
 
 def validParenthesis(str):
+    if len(str) % 2 != 0: return False
+    stack = []
+    isRight = {
+        ')': '(',
+        '}': '{',
+        ']': '['
+    }
+        
+    for char in str:
+        if char not in isRight:
+            stack.append(char)
+        else:
+            lastLeft = None
+            if stack:
+                lastLeft = stack.pop()
+            if isRight[char] != lastLeft:
+                return False 
+            
+    return len(stack) == 0
 
 
 print(validParenthesis(input1))
